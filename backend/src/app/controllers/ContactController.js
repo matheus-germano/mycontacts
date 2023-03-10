@@ -33,7 +33,9 @@ class ContactController {
       return response.status(400).json({ error: 'This e-mail is already in use' });
     }
 
-    const contact = await ContactsRepository.create(name, email, phone, category_id);
+    const contact = await ContactsRepository.create({
+      name, email, phone, category_id,
+    });
 
     response.json(contact);
   }
